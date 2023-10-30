@@ -1,6 +1,8 @@
 # chat-whizz-application
 
+For adding the picture, we will use cloudinary platform
 
+We will use cloudinary for uploading image and see the url which is coming
 
 ## Getting started
 

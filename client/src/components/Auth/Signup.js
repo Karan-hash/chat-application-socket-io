@@ -70,11 +70,12 @@ const Signup = () => {
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
       setPicLoading(false);
-      navigate.push("/chats");
+      navigate("/chats");
     } catch (error) {
+      console.log("--Error --: ", error);
       toast({
         title: "Error Occured!",
-        description: error.response.data.message,
+        description: error.response,
         status: "error",
         duration: 5000,
         isClosable: true,
@@ -100,9 +101,9 @@ const Signup = () => {
     if (pics.type === "image/jpeg" || pics.type === "image/png") {
       const data = new FormData();
       data.append("file", pics);
-      data.append("upload_preset", "chat-app");
-      data.append("cloud_name", "piyushproj");
-      fetch("https://api.cloudinary.com/v1_1/piyushproj/image/upload", {
+      data.append("upload_preset", "chat-application");
+      data.append("cloud_name", "dhsc1nsso");
+      fetch("https://api.cloudinary.com/v1_1/dhsc1nsso/image/upload", {
         method: "post",
         body: data,
       })
