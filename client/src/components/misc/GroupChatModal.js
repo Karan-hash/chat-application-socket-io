@@ -16,8 +16,8 @@ import {
   import axios from "axios";
   import { useState } from "react";
   import { ChatState } from "../../Context/ChatProvider";
-  import UserBadgeItem from "../userAvatar/UserBadgeItem";
-  import UserListItem from "../userAvatar/UserListItem";
+  import UserBadgeItem from "./../avatars/UserBadgeItem";
+  import UserListItem from "./../avatars/UserListItem";
   
   const GroupChatModal = ({ children }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -59,7 +59,7 @@ import {
           },
         };
         const { data } = await axios.get(`/api/user?search=${search}`, config);
-        console.log(data);
+        console.log('----data----', data);
         setLoading(false);
         setSearchResult(data);
       } catch (error) {
@@ -81,7 +81,7 @@ import {
     const handleSubmit = async () => {
       if (!groupChatName || !selectedUsers) {
         toast({
-          title: "Please fill all the feilds",
+          title: "Please fill all the required fields",
           status: "warning",
           duration: 5000,
           isClosable: true,
@@ -124,7 +124,7 @@ import {
         });
       }
     };
-  
+    
     return (
       <>
         <span onClick={onOpen}>{children}</span>
@@ -151,11 +151,11 @@ import {
               </FormControl>
               <FormControl>
                 <Input
-                  placeholder="Add Users eg: John, Piyush, Jane"
+                  placeholder="Add Users eg: Karan, Varun ..."
                   mb={1}
                   onChange={(e) => handleSearch(e.target.value)}
                 />
-              </FormControl>
+              </FormControl> 
               <Box w="100%" display="flex" flexWrap="wrap">
                 {selectedUsers.map((u) => (
                   <UserBadgeItem
@@ -170,7 +170,7 @@ import {
                 <div>Loading...</div>
               ) : (
                 searchResult
-                  ?.slice(0, 4)
+                  ?.slice(0, 10)
                   .map((user) => (
                     <UserListItem
                       key={user._id}
