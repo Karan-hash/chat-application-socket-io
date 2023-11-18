@@ -1,5 +1,4 @@
 # chat-whizz-application
-Github Link for learning:- https://github.com/piyush-eon/mern-chat-app/
 
 For adding the picture, we will use cloudinary platform
 
